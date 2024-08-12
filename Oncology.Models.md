@@ -9,7 +9,7 @@ Various animal models are used to study immunotherapies in solid tumours. Unfort
 
 ## Mouse Models
 
-Mouse models are actually a poor immunological model for solid tumours originating in adults. I will skip over the differences between the mouse and human and will focus on a set of different conceptual issues.
+Mouse models are actually a poor immunological model for solid tumours originating in adults. I will skip over the differences between the mouse and human immune systems and will focus instead on a set of hidden conceptual issues.
 
 The life span of mice is very short compared to the age when tumours arise in adults. Thus, mice will never accumulate the mutations that a normal older adult will harbour. Adults who develop cancer probably have a similar (relatively) high burden of mutations and the immune system has come into contact with these mutations, ultimately developing at least some level of tolerance.
 
