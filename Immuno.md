@@ -1,4 +1,4 @@
-# Immuno
+# Immunology
 
 
 ## Ig
@@ -37,6 +37,19 @@ Note:
 - the only elements in common are the amide bonds in the back-bone;
 
 The binding to the MHC-1 is therefore very non-specific! In addition, the binding energy may be relatively small: the back-bone consists of amide-bonds, but is otherwise not rich in other binding motifs. Highly hydrophilic peptides may dissociate easily from the MHC-1 molecule; peptides which remain bound are probably rich in hydrophobic amino acids, which prevents the dissociation. The "specificity" and "affinity" of the MHC-1 molecules may be therefore a reflection of rapid dissociation and loss of water-soluble epitopes.
+
+
+## TLR
+
+Toll Like Receptors are pattern-recognition receptors important in induction of innate immune responses.
+
+One important part of their action mechanism involves targeting the phagocytosed microbial material to the proteasome in order to generate the short peptides which will bind to MHC class 1 and class 2 molecules. Various ubiquitin ligases (E2- or E3-ligases, e.g. TRAF6, Ubc13, LUBAC complex) are therefore activated: phagocytosed proteins get ubiquitinated and are targeted for degradation by the proteasome.
+
+It is unclear to me if these ubiquitin pathways have additional signalling roles. They may be limited to activation of the ubiquitination step of the phagocytosed microbial materials and are therefore highly relevant to target those materials to the proteasome.
+
+The induction of nuclear transcription factors may involve a distinct set of signalling pathways (without any links to the ubiquitination steps). The results in the literature linking these 2 pathways may be inaccurate and misleading.
+
+
 
 ## References
 
