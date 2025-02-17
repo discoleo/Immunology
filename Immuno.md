@@ -41,11 +41,13 @@ The binding to the MHC-1 is therefore very non-specific! In addition, the bindin
 
 ## TLR
 
-Toll Like Receptors are pattern-recognition receptors important in induction of innate immune responses, including the activation of innate immune cells to initiate adaptive immunity.
+Toll Like Receptors (TLR) are pattern-recognition receptors important in induction of innate immune responses, including the activation of innate immune cells to initiate adaptive immunity.
 
-One important part of their action mechanism involves targeting the phagocytosed microbial material to the proteasome in order to generate the short peptides which will bind to MHC class 1 and class 2 molecules. Various ubiquitin ligases (E2- or E3-ligases, e.g. TRAF6, Ubc13, LUBAC complex) are therefore activated: phagocytosed proteins get ubiquitinated and are targeted for degradation by the proteasome.
+The immune system in amphibians is mainly restricted to innate immunity. Adaptive immunity evolved in vertebrates and mammals. Consequently, new mechanisms have developed in these animals to activate the adaptive immunity - based mainly on TLR and NOD Like Receptors (NLR).
 
-It is unclear to me if these ubiquitin pathways have additional signalling roles. They may be limited to activation of the ubiquitination step of the phagocytosed microbial materials and are therefore highly relevant to target those materials to the proteasome.
+One important part of the action mechanism of TLR involves targeting the phagocytosed microbial material to the proteasome in order to generate the short peptides which will bind to MHC class 1 and class 2 molecules. Various ubiquitin ligases (E2- or E3-ligases, e.g. TRAF6, Ubc13, LUBAC complex) are therefore activated: phagocytosed proteins get ubiquitinated and are targeted for degradation by the proteasome.
+
+It is unclear to me if these ubiquitin pathways have additional signalling roles, as they are likely evolutionary new. This pathway is highly relevant to target those non-self materials to the proteasome, but it may be limited to this one function: the activation of the ubiquitination step of the phagocytosed microbial materials.
 
 The induction of nuclear transcription factors may involve a distinct set of signalling pathways (without any links to the ubiquitination steps). The results in the literature linking these 2 pathways may be inaccurate and misleading.
 
@@ -57,8 +59,18 @@ Genomics:
 - TLR9: 3p21.2, 2 exons;
 - TLR10: 4p14 (near TLR1), 4 exons;
 
+**Caution:** Many studies of TLR ligands may be impacted by LPS contamination. Proteins synthesized in bacteria or isolated from bacteria may be contaminated with LPS.
 
 ## References
 
 1. Xia X et al. C-terminal deletion-induced condensation sequesters AID from IgH targets in immunodeficiency. EMBO (2022)
 > https://doi.org/10.15252/embj.2021109324
+
+### TLR
+
+2. Sahoo BR. Structure of fish Toll-like receptors (TLR) and NOD-like receptors (NLR). Int J Biol Macromol. (2020)
+> https://doi.org/10.1016/j.ijbiomac.2020.07.293
+
+3. Duan T, Du Y, Xing C, Wang HY, Wang RF. Toll-Like Receptor Signaling and Its Role in Cell-Mediated Immunity. Front Immunol. (2022)
+> https://doi.org/10.3389/fimmu.2022.812774
+
