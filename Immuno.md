@@ -41,7 +41,7 @@ The binding to the MHC-1 is therefore very non-specific! In addition, the bindin
 
 ## TLR
 
-Toll Like Receptors are pattern-recognition receptors important in induction of innate immune responses.
+Toll Like Receptors are pattern-recognition receptors important in induction of innate immune responses, including the activation of innate immune cells to initiate adaptive immunity.
 
 One important part of their action mechanism involves targeting the phagocytosed microbial material to the proteasome in order to generate the short peptides which will bind to MHC class 1 and class 2 molecules. Various ubiquitin ligases (E2- or E3-ligases, e.g. TRAF6, Ubc13, LUBAC complex) are therefore activated: phagocytosed proteins get ubiquitinated and are targeted for degradation by the proteasome.
 
@@ -49,6 +49,13 @@ It is unclear to me if these ubiquitin pathways have additional signalling roles
 
 The induction of nuclear transcription factors may involve a distinct set of signalling pathways (without any links to the ubiquitination steps). The results in the literature linking these 2 pathways may be inaccurate and misleading.
 
+Genomics:
+- TLR1: 4p14, 7 exons;
+- ...
+- TLR7: Xp22.2, 3 exons;
+- TLR8: Xp22.2 (near TLR7), 3 exons;
+- TLR9: 3p21.2, 2 exons;
+- TLR10: 4p14 (near TLR1), 4 exons;
 
 
 ## References
