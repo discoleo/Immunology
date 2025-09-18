@@ -39,3 +39,40 @@ read.allergens.html = function(url = NULL, strip = NULL) {
 	return(x);
 }
 
+### Links: GeneBank & UniProt
+read.allergen.isotbl = function(x, start = 1, n = 100, verbose = TRUE) {
+	if(is.null(x$idURL)) {
+		x$idURL = sub("viewallergen.php?aid=", "", x$Url, fixed = TRUE);
+	}
+	if(verbose) div = ceiling(n / 16);
+	n = n + start - 1;
+	if(n > nrow(x)) n = nrow(x);
+	lst = lapply(seq(start, n), function(id) {
+		lst = read.allergen.isotbl0(x$idURL[id]);
+		lst$ID   = id;
+		lst$Name = x$Allergen[id];
+		# Feedback: is NOT real-time;
+		if(verbose) {
+			idn = id %% div;
+			if(idn == 0) cat(id, ", ", sep = "");
+		}
+		return(lst);
+	});
+	if(verbose) cat("OK\nFinished!\n");
+	lst = do.call(rbind, lst);
+	return(lst);
+}
+read.allergen.isotbl0 = function(id) {
+	url = paste0("https://www.allergen.org/viewallergen.php?aid=", id);
+	doc = rvest::read_html(url);
+	x   = doc |> rvest::html_element(xpath = "//table[@id='isotable']");
+	nms = c("Variants", "GBPr", "GBNc", "UniProt", "PDB");
+	if(inherits(x, "xml_missing")) {
+		x = data.frame(NA, NA, NA, NA, NA);
+		names(x) = nms;
+		return(x);
+	}
+	x = rvest::html_table(x);
+	names(x) = nms;
+	return(x);
+}
