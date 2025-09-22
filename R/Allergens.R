@@ -76,3 +76,26 @@ read.allergen.isotbl0 = function(id) {
 	names(x) = nms;
 	return(x);
 }
+
+### UniProt Table
+
+read.uniprot.html = function(url, verbose = TRUE) {
+	doc = rvest::read_html(url);
+	x   = doc |> rvest::html_element(xpath = "//table[contains(@class, 'data-table')]") |>
+		rvest::html_table(header = TRUE, convert = FALSE);
+	# Columns:
+	x   = x[, -c(1,3)]
+	names(x)[c(2,3,4,5,6)] = c("EName", "PrName", "GeneName", "Len", "GeneID");
+	# Length:
+	x$Len = sub(" AA$", "", x$Len);
+	x$Len = gsub(",", "", x$Len);
+	isNum = grepl("^\\d+$", x$Len);
+	if(all(isNum)) {
+		x$Len = as.integer(x$Len);
+	} else {
+		if(verbose) {
+			print(head(x$Len[! isNum]));
+		}
+	}
+	invisible(x);
+}
