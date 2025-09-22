@@ -1,5 +1,18 @@
 
 
+rm.col = function(data, cols, invisible = TRUE) {
+	idNm = pmatch(cols, names(data));
+	idNA = which(is.na(idNm));
+	if(length(idNA) > 0) {
+		warning("Some names not found: ",
+			paste0(cols[idNA], collapse = ", "));
+			idNm = idNm[ - idNA];
+	}
+	data = data[, - idNm];
+	if(! invisible) return(data);
+	invisible(data);
+}
+
 ### Allergen DB
 url.allergens = function() {
 	fields = c("allergenname", "allergensource", "TaxSource",
