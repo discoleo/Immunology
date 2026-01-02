@@ -5,17 +5,18 @@
 # nPP   = (Start, End) in the original PP-sequence;
 # nCore = (Start, End) of core-subsequence;
 plot.epitopes = function(pp, nS, nE, nCore, nPP = NULL,
-		opt, cex = 1, col = "#B088C2CC") {
+		opt, cex = 1, col = "#E8BAFAD2", mar = 0) {
 	if(is.null(nPP)) nPP = range(c(nS, nE));
 	# Core:
 	nCoreA = nCore - nPP[1] + 1;
 	ppCore = substr(pp, nCoreA[1], nCoreA[2]);
 	# Plot:
-	par.old = par(mar = c(1,1,1,1) + 0.1, cex = cex);
+	if(length(mar) == 1) mar = rep(mar, 4);
+	par.old = par(mar = mar + 0.1, cex = cex);
 	on.exit(par(par.old));
 	with(opt, {
 	plot.new();
-	plot.window(xlim = c(0, xL), ylim = c(0, xy[2] + 10), asp = 1);
+	plot.window(xlim = c(0, xL), ylim = c(0, xy[2] ), asp = 1);
 	
 	xE = xy[1] + dXE + nchar(ppCore) * xCh;
 	rect(xy[1] - dX/2 - 0.25, y0 + 0.75 * dY - 0.25,
@@ -67,20 +68,26 @@ data.frame(ppAll)
 
 opt = list(
 	dY = 14, dX = 5,
-	x0 = 100, y0 = 10);
+	x0 = 100, y0 = 10, xMR = 5);
 opt = c(opt,
-	list(xy = c(opt$x0, 18 * opt$dY + 10),
+	list(xy = c(opt$x0, 16 * opt$dY + opt$y0 + 15),
 	#
 	xCh = 10,
 	dXE = 15, cex = 1.5,
 	# dXE =  5, cex = 1.5, # for png
 	# dXE = -20, cex = 1,
-	xL = nchar(pp) * 13 + opt$y0)
+	xL = nchar(pp) * 13 + opt$xMR)
 )
 cex = opt$cex;
 
-# png(file = "MHC.2.Core.Nested.png")
+###
+plot.epitopes(pp, nS, nE, nCore, nPP, opt = opt, cex = cex)
 
+
+### PNG
+
+# png(file = "MHC.2.Core.Nested.png")
+opt$dXE = -5; opt$cex = 1.5;
 plot.epitopes(pp, nS, nE, nCore, nPP, opt = opt, cex = cex)
 
 dev.off()
