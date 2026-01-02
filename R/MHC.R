@@ -1,5 +1,39 @@
 
 
+# nS = Start position of Epitope;
+# nE = End position of Epitope;
+# nPP   = (Start, End) in the original PP-sequence;
+# nCore = (Start, End) of core-subsequence;
+plot.epitopes = function(pp, nS, nE, nCore, nPP = NULL,
+		opt, cex = 1, col = "#B088C2CC") {
+	if(is.null(nPP)) nPP = range(c(nS, nE));
+	# Core:
+	nCoreA = nCore - nPP[1] + 1;
+	ppCore = substr(pp, nCoreA[1], nCoreA[2]);
+	# Plot:
+	par.old = par(mar = c(1,1,1,1) + 0.1, cex = cex);
+	on.exit(par(par.old));
+	with(opt, {
+	plot.new();
+	plot.window(xlim = c(0, xL), ylim = c(0, xy[2] + 10), asp = 1);
+	
+	xE = xy[1] + dXE + nchar(ppCore) * xCh;
+	rect(xy[1] - dX/2 - 0.25, y0 + 0.75 * dY - 0.25,
+		xE - dX/2, y0 + 19 * dY, col = col[1], border = NA);
+	
+	for(id in seq_along(nS)) {
+		preP  = substr(pp, nS[id] - nPP[1] + 1, nCoreA[1] - 1);
+		postP = substr(pp, nCoreA[2] + 1, nE[id] - nPP[1] + 1);
+		xE = xy[1] + dXE + nchar(ppCore) * xCh;
+		y = y0 + dY * (19 - id);
+		text(xy[1], y, ppCore, adj = c(0,0));
+		text(xy[1] - dX, y, preP, adj = c(1,0));
+		text(xE, y, postP, adj = c(0,0));
+	}
+	});
+	invisible();
+}
+
 
 # 1. Lippolis JD, White FM, Marto JA, Luckey CJ, Bullock TN, Shabanowitz J, Hunt DF, Engelhard VH.
 #    Analysis of MHC class II antigen processing by quantitation of peptides that constitute nested sets.
@@ -31,34 +65,23 @@ data.frame(ppAll)
 
 ### Graphic
 
-dY = 14; dX = 5;
-x0 = 100; y0 = 10;
-xy = c(x0, 18 * dY + 10);
-
-xCh = 10;
-dXE = 15; cex = 1.5;
-dXE =  5; cex = 1.5; # for png
-# dXE = -20; cex = 0
-xL = nchar(pp) * 13 + y0;
+opt = list(
+	dY = 14, dX = 5,
+	x0 = 100, y0 = 10);
+opt = c(opt,
+	list(xy = c(opt$x0, 18 * opt$dY + 10),
+	#
+	xCh = 10,
+	dXE = 15, cex = 1.5,
+	# dXE =  5, cex = 1.5, # for png
+	# dXE = -20, cex = 1,
+	xL = nchar(pp) * 13 + opt$y0)
+)
+cex = opt$cex;
 
 # png(file = "MHC.2.Core.Nested.png")
-par.old = par(mar = c(1,1,1,1) + 0.1, cex = cex); plot.new()
-plot.window(xlim = c(0, xL), ylim = c(0, xy[2] + 10), asp = 1)
 
-xE = xy[1] + dXE + nchar(ppCore) * xCh;
-rect(xy[1] - dX/2 - 0.25, y0 + 0.75 * dY - 0.25,
-	xE - dX/2, y0 + 19 * dY, col = "#B088C2CC", border = NA);
-
-for(id in seq_along(nS)) {
-	preP  = substr(pp, nS[id] - nPP[1] + 1, nCoreA[1] - 1);
-	postP = substr(pp, nCoreA[2] + 1, nE[id] - nPP[1] + 1);
-	xE = xy[1] + dXE + nchar(ppCore) * xCh;
-	y = y0 + dY * (19 - id);
-	text(xy[1], y, ppCore, adj = c(0,0));
-	text(xy[1] - dX, y, preP, adj = c(1,0));
-	text(xE, y, postP, adj = c(0,0));
-}
-
+plot.epitopes(pp, nS, nE, nCore, nPP, opt = opt, cex = cex)
 
 dev.off()
 
