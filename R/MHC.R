@@ -53,6 +53,7 @@ nCoreA = nCore - nPP[1] + 1;
 substr(pp, nCoreA[1], nCoreA[2])
 
 ### Epitope Nested Set
+# - Ligand Elution Data: decreasing abundance;
 nS = c(145, 145, 140, 144, 140, 145, 141, 144, 145,
 	143, 140, 143, 143, 144, 145, 144, 144, 145);
 nE = c(159, 158, 158, 158, 159, 160, 158, 159, 161,
